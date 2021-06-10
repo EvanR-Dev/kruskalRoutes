@@ -53,4 +53,30 @@ public class Kruskals {
 	public ArrayList<Edge> kruskalAlg(ArrayList<Edge> edges, HashMap<String, Integer> vertices) {
 		
 	}
+	
+	
+	// setters and getters
+	public String getU() {
+		return u;
+	}
+
+	public String getV() {
+		return v;
+	}
+
+	public int getWeight() {
+		return weight;
+	}
+
+	@Override
+	public int compareTo(Edge e) {
+		if (this.weight > e.weight) return 1;
+		if (this.weight < e.weight) return -1;
+		return 0;
+	}
+		
+	@Override
+	public String toString() {
+		return u + "  -----  " + v + " | Distance = " + weight + '\n';
+	}
 }
