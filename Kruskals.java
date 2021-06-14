@@ -51,7 +51,33 @@ public class Kruskals {
 	}
 	
 	public ArrayList<Edge> kruskalAlg(ArrayList<Edge> edges, HashMap<String, Integer> vertices) {
-		
+		// DisjSets obj
+		DisjSets ds = new DisjSets(vertices.size());
+		// Priority q with all edges
+		PriorityQueue<Edge> pq = new PriorityQueue<>(edges);
+		// Min spanning tree
+		ArrayList<Edge> mst = new ArrayList<>();
+
+		// build mst using Kruskal's algorithm
+		while (mst.size() != vertices.size() - 1) {
+			Edge e = pq.remove();		// java deleteMin
+			
+			// get index of vertices of edge
+			// efficient look up due to Hash table
+			int indexU = vertices.get(e.getU());
+			int indexV = vertices.get(e.getV());
+			
+			// find in disj set
+			int uset = ds.find(indexU);
+			int vset = ds.find(indexV);
+
+			// check that edge is accepted
+			if (uset != vset) {
+				mst.add(e);
+				ds.union(uset, vset);
+		    }
+		}
+		return mst;
 	}
 	
 	
