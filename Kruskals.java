@@ -80,6 +80,22 @@ public class Kruskals {
 		return mst;
 	}
 	
+	// nested Edge (u, v) class
+	private class Edge implements Comparable<Edge> {
+		private String u, v;
+		private int weight;
+		
+		// construct edge
+		public Edge(String u, String v, int weight) {
+		// throw exception is edge is empty
+		if (u.isEmpty() || v.isEmpty())
+			throw new IllegalArgumentException("String is empty (len 0).\n");
+			
+		this.u = u;
+		this.v = v;
+		this.weight = weight;
+	}
+	
 	
 	// setters and getters
 	public String getU() {
