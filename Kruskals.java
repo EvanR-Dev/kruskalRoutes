@@ -80,6 +80,18 @@ public class Kruskals {
 		return mst;
 	}
 	
+	public void displayMST(ArrayList<Edge> mst) {
+		int sumDist = 0;
+		
+		// display each edge
+		for (Edge e : mst) {
+			System.out.println(e.toString());
+			sumDist += e.getWeight();
+		}
+		// total dist
+		System.out.println("\nSum of all distances in tree: " + sumDist);
+	}
+	
 	// nested Edge (u, v) class
 	private class Edge implements Comparable<Edge> {
 		private String u, v;
